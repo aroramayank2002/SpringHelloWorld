@@ -15,3 +15,8 @@ Example Validations:
     
 Example Class level Validations
     curl -v -X POST localhost:8080/books/0  
+    
+Example Format Validation
+    curl --location --request POST 'http://localhost:8080/books' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{"name":"ABC", "author":"ABC", "price":"as"}'
