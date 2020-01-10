@@ -20,3 +20,9 @@ Example Format Validation
     curl --location --request POST 'http://localhost:8080/books' \
     --header 'Content-Type: application/json' \
     --data-raw '{"name":"ABC", "author":"ABC", "price":"as"}'
+    
+Lombok example:
+    https://www.baeldung.com/intro-to-project-lombok
+    
+Note:
+    To enable debug logging, use --debug in "Program Arguments"

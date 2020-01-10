@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.model.Book;
+import com.example.model.BuilderClass;
 import com.example.model.Greeting;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import org.springframework.http.HttpStatus;
@@ -8,8 +9,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.method.annotation.MethodArgumentConversionNotSupportedException;
-import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.client.HttpClientErrorException;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
@@ -36,14 +36,23 @@ public class GreetingController {
     }
 
     @GetMapping("/books/{id}")
-    Book findOne(@PathVariable @Min(1) Long id) { //jsr 303 annotations
+    Book findOne(@PathVariable @Min(1) Long id) {
         return new Book();
     }
 
+    @PostMapping("/builder")
+    BuilderClass findBuilder(@RequestParam(value = "name", defaultValue = "John") String name,
+                             @RequestParam(value = "phone", defaultValue = "1234") String phone) {
+        BuilderClass builderClass = BuilderClass.builder().name(name).phone(phone).build();
+        return builderClass;
+    }
 
 //    This overrides global exception handler.
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler({InvalidFormatException.class, MethodArgumentNotValidException.class})
+    @ExceptionHandler({InvalidFormatException.class,
+            MethodArgumentNotValidException.class,
+            HttpClientErrorException.UnsupportedMediaType.class,
+            HttpClientErrorException.MethodNotAllowed.class})
     public Map<String, String> handleValidationExceptions(
             MethodArgumentNotValidException ex) {
         Map<String, String> errors = new HashMap<>();
@@ -54,6 +63,4 @@ public class GreetingController {
         });
         return errors;
     }
-
-
 }
