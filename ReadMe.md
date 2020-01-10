@@ -10,3 +10,8 @@ Resolution:
 @Valid
     Without this annotation, validations on the POJO properties won't come to effect.   
     
+Example Validations:
+    curl -v -X POST localhost:8080/books -H "Content-type:application/json" -d "{\"name\":\"ABC\"}"
+    
+Example Class level Validations
+    curl -v -X POST localhost:8080/books/1
