@@ -14,4 +14,4 @@ Example Validations:
     curl -v -X POST localhost:8080/books -H "Content-type:application/json" -d "{\"name\":\"ABC\"}"
     
 Example Class level Validations
-    curl -v -X POST localhost:8080/books/1
+    curl -v -X POST localhost:8080/books/0  
