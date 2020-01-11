@@ -37,3 +37,5 @@ Note: lombock introduces @Slf4j
 Fine tuned logging : https://www.baeldung.com/spring-boot-logging
 
 Note: Field injection is not recommended: https://blog.marcnuri.com/field-injection-is-not-recommended/
+
+Solid principles: https://en.wikipedia.org/wiki/SOLID

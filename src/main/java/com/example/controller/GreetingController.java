@@ -31,8 +31,8 @@ public class GreetingController {
     private Greeting greeting;
 
     @Autowired
-    public void setGreeting(Greeting greeting){
-        this.greeting = greeting;
+    public void setGreeting(Greeting greetingSecond){
+        this.greeting = greetingSecond;
     }
 
     @RequestMapping("/greeting")

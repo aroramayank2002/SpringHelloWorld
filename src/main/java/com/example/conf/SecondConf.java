@@ -3,14 +3,12 @@ package com.example.conf;
 import com.example.model.Greeting;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 
 @Configuration
-@Import(SecondConf.class)
-public class AppConfiguration {
+public class SecondConf {
 
     @Bean
-    public Greeting greeting() {
-        return new Greeting(12, "Mayaro");
+    public Greeting greetingSecond() {
+        return new Greeting(13, "Mayaro12");
     }
 }
