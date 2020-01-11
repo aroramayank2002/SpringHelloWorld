@@ -23,6 +23,17 @@ Example Format Validation
     
 Lombok example:
     https://www.baeldung.com/intro-to-project-lombok
+    curl --location --request POST 'http://localhost:8080/builder' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{"name":"test", "phone":"1234"}'
     
 Note:
     To enable debug logging, use --debug in "Program Arguments"
+    
+Autowiring: https://blog.marcnuri.com/field-injection-is-not-recommended/
+
+Note: lombock introduces @Slf4j
+
+Fine tuned logging : https://www.baeldung.com/spring-boot-logging
+
+Note: Field injection is not recommended: https://blog.marcnuri.com/field-injection-is-not-recommended/

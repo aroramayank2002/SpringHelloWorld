@@ -4,6 +4,8 @@ import com.example.model.Book;
 import com.example.model.BuilderClass;
 import com.example.model.Greeting;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
@@ -19,12 +21,23 @@ import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
 @Validated
+@Slf4j
 public class GreetingController {
+
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
+//  Better way compared to field injection.
+    private Greeting greeting;
+
+    @Autowired
+    public void setGreeting(Greeting greeting){
+        this.greeting = greeting;
+    }
+
     @RequestMapping("/greeting")
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
+        log.info("Autowired bean greeting: " + greeting.getContent());
         return new Greeting(counter.incrementAndGet(),
                 String.format(template, name));
     }
@@ -43,8 +56,7 @@ public class GreetingController {
     @PostMapping("/builder")
     BuilderClass findBuilder(@RequestParam(value = "name", defaultValue = "John") String name,
                              @RequestParam(value = "phone", defaultValue = "1234") String phone) {
-        BuilderClass builderClass = BuilderClass.builder().name(name).phone(phone).build();
-        return builderClass;
+        return BuilderClass.builder().name(name).phone(phone).build();
     }
 
 //    This overrides global exception handler.
