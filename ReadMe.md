@@ -39,3 +39,5 @@ Fine tuned logging : https://www.baeldung.com/spring-boot-logging
 Note: Field injection is not recommended: https://blog.marcnuri.com/field-injection-is-not-recommended/
 
 Solid principles: https://en.wikipedia.org/wiki/SOLID
+
+Maven dependency scopes: https://howtodoinjava.com/maven/maven-dependency-scopes/
