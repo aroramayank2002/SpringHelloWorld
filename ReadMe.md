@@ -41,3 +41,11 @@ Note: Field injection is not recommended: https://blog.marcnuri.com/field-inject
 Solid principles: https://en.wikipedia.org/wiki/SOLID
 
 Maven dependency scopes: https://howtodoinjava.com/maven/maven-dependency-scopes/
+
+Running application: java -jar target/demo-0.0.1-SNAPSHOT.jar 
+
+Swagger:
+    If not method type is put for an api it is open for all method types.
+    Reference: 
+     https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api
+     https://www.javainuse.com/spring/boot_swagger

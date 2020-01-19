@@ -25,6 +25,7 @@ public class DemoApplication {
             Arrays.sort(beanNames);
             for (String beanName : beanNames) {
                 System.out.println(beanName);
+                break;
             }
 
             System.out.println("Total beans: " + beanNames.length);
